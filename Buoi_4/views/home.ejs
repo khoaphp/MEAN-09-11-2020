@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     
+    <% if(Tuoi>=18){ %>
+        <div>Du tuoi roi</div>
+    <% }else{ %>
+        <div>Chua du tuoi</div>
+    <% } %>
+
+    <%  Color.forEach(function(mau){ %>
+        <div style="background-color:<%- mau %>;">Hi</div>
+        <%- include("./sinhvien", {NS:Tuoi}) %>
+    <% }); %>
+    
+    
+</body>
+</html>
