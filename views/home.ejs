@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="http://localhost:3000" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/layout.css" />
+    <script src="./js/jquery.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script>
+    var socket = io("http://localhost:3000");
+
+    socket.on("server-send-text", function(data){
+        $("h2").html(data);
+    });
+
+    $(document).ready(function(){
+        $("#Chat").click(function(){
+            var msg = $("#txt").val();
+            //var socketid = $("#to").val();
+            var roomname = $("#rooms").val();
+            socket.emit("client-send-text-inRoom", 
+                {txt:msg, RoomName:roomname}
+            );
+        });
+
+        $("#rooms").change(function(){
+            var chon = $(this).val();
+            socket.emit("chonRoom", chon);
+        });
+    });
+    </script>
+</head>
+<body>
+    <h2>Home</h2>
+    <input type="text" id="txt" />
+    <input type="text" id="to" placeholder="Socket ID receiver" />
+    <button id="Chat">Chat</button>
+
+    <select id="rooms">
+        <option value="0">Chọn room</option>
+        <option value="duoi18">Dưới 18 tuổi</option>
+        <option value="tren18">Trên 18 tuổi</option>
+    </select>
+
+</body>
+</html>
