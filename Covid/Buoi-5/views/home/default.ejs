@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="<%- domain %>" />
+    <%- include('blocks/header') %>
+ </head>
+    <body>
+        
+    <%- include('blocks/menu') %>
+
+    <main class="container">
+        <%- include('pages/' + page + '.ejs') %>
+    </main><!-- /.container -->
+
+
+    <script src="./demo/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+</html>
