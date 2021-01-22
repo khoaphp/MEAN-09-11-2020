@@ -1,0 +1,27 @@
+<h2 style="color:<% if(Re==1){ %>blue<% }else{ %>red<% } %>; font-weight: bold;">
+<%- Msg %>
+</h2>
+
+<h3>Go to login page after <span id="counting">5</span> second.</h3>
+
+<script>
+$(document).ready(function(){
+    timeCounter();
+});
+
+function timeCounter(){
+    var currentTime = parseInt( $("#counting").html() );
+    if(currentTime <= 0){
+        window.location = "./login";
+        return;
+    }else{
+        currentTime = currentTime - 1;
+        $("#counting").html(currentTime);
+    }
+
+    setTimeout(()=>{
+        timeCounter();
+    }, 1000);
+
+}
+</script>
